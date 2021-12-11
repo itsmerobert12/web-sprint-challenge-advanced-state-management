@@ -7,48 +7,48 @@ export const ERROR = 'ERROR';
 
 
 export const fetchSmurfs = () => {
-    return (dispatch) =>{
+    return (dispatch) => {
         dispatch(fetchStart());
         axios.get(`http://localhost:3333/smurfs`)
-        .then(res => {
-            console.log('fetch it', res)
-            dispatch(fetchSuccess(res.data));
-        })
-        .catch(err => {
-            console.error(err)
-            dispatch(fetchFail(err));
-        })
+            .then(res => {
+                console.log('fetch it', res)
+                dispatch(fetchSuccess(res.data));
+            })
+            .catch(err => {
+                console.error(err)
+                dispatch(fetchFail(err));
+            })
     }
 }
 
 export const addSmurf = (upload) => {
-    return(dispatch) => {
-    axios.post('http://localhost:3333/smurfs', {
-        name:upload.name,
-        position:upload.position,
-        nickname:upload.nickname,
-        description:upload.description
-    })
-    .then(res =>{
-        console.log('addSmurf res',res.data)
-        dispatch(fetchSuccess(res.data));
+    return (dispatch) => {
+        axios.post('http://localhost:3333/smurfs', {
+            name: upload.name,
+            position: upload.position,
+            nickname: upload.nickname,
+            description: upload.description
+        })
+            .then(res => {
+                console.log('addSmurf res', res.data)
+                dispatch(fetchSuccess(res.data));
 
-    })
-    .catch(err=>{
-        dispatch(fetchFail(err));
-    })
+            })
+            .catch(err => {
+                dispatch(fetchFail(err));
+            })
     }
 }
 
-export const fetchStart =()=>{
-    return ({type:FETCH_START});
+export const fetchStart = () => {
+    return ({ type: FETCH_START });
 }
 
-export const fetchSuccess =(smurf)=>{
-    return ({type: FETCH_SUCCESS, payload:smurf})
+export const fetchSuccess = (smurf) => {
+    return ({ type: FETCH_SUCCESS, payload: smurf })
 }
-export const fetchFail =(error)=>{
-    return ({type: FETCH_FAIL, payload:error})
+export const fetchFail = (error) => {
+    return ({ type: FETCH_FAIL, payload: error })
 }
 
 // export const addSmurf = (info)=>{
@@ -60,8 +60,8 @@ export const fetchFail =(error)=>{
 //         description:info.description
 //     }})
 // }
-export const setError = (err)=>{
-    return({type:ERROR, payload:err})
+export const setError = (err) => {
+    return ({ type: ERROR, payload: err })
 }
 
 //Task List:

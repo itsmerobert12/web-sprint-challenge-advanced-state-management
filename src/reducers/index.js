@@ -1,52 +1,52 @@
 import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL, SMURF_ADD, ERROR } from './../actions/index'
 
 export const initialState = {
-    smurf:[{
-        id:"",
-        name:'',
-        position:'',
+    smurf: [{
+        id: "",
+        name: '',
+        position: '',
         nickname: '',
         description: ''
     }],
-    isLoading:false,
-    error:''
+    isLoading: false,
+    error: ''
 
 }
 
 
-const reducer = (state = initialState , action)=>{
+const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case(FETCH_START):
-        return({
-            ...state,
-            smurf:[],
-            isLoading:true,
-            error:''            
-        })
-        case(FETCH_SUCCESS):
-        return({
-            ...state,
-        smurf: action.payload,
-        isLoading: false,
-        errors:'',
-        })
-        case(FETCH_FAIL):
-        return({
-            ...state,
-            smurf:[],
-            isLoading:false,
-            error:action.payload,
-        })
-        case(SMURF_ADD):
-        return({
-            ...state,
-            smurf:[...state.smurf, action.payload.data]
-        })
-        case(ERROR):
-        return({
-            ...state,
-            error:action.payload
-        })
+        case (FETCH_START):
+            return ({
+                ...state,
+                smurf: [],
+                isLoading: true,
+                error: ''
+            })
+        case (FETCH_SUCCESS):
+            return ({
+                ...state,
+                smurf: action.payload,
+                isLoading: false,
+                errors: '',
+            })
+        case (FETCH_FAIL):
+            return ({
+                ...state,
+                smurf: [],
+                isLoading: false,
+                error: action.payload,
+            })
+        case (SMURF_ADD):
+            return ({
+                ...state,
+                smurf: [...state.smurf, action.payload.data]
+            })
+        case (ERROR):
+            return ({
+                ...state,
+                error: action.payload
+            })
         default:
             return state;
     }
